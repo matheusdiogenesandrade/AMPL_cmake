@@ -1,0 +1,7 @@
+[requires]
+
+[generators]
+cmake
+cmake_paths
+CMakeDeps
+CMakeToolchain
