@@ -3,13 +3,22 @@ project(AMPLCMake)
 
 ##### SETs
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/support)
-#set (CMAKE_CXX_STANDARD 20)
+set (CMAKE_BUILD_TYPE Release) 
+set (CMAKE_CXX_STANDARD 20)
+set (BUILD_SHARED_LIBS On)
+
+## Conan includes
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
+conan_basic_setup()
 
 ##### Additional packages 
 
 find_package (AMPL)
+find_package (range-v3 REQUIRED)
 
-##### Include Dirs 
+##### Includes
+
 
 include_directories(
     SYSTEM
@@ -27,5 +36,6 @@ add_executable(
 target_link_libraries(
     main 
     ampl
+    range-v3::range-v3
     )
 
