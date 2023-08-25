@@ -10,6 +10,9 @@ int main(int argc, char **argv) {
     // If the AMPL installation directory is not in the system search path:
 //    ampl::Environment env("/home/matheusdiogenesandrade/ampl");
 //    ampl::AMPL ampl(env);
+    ampl.setOption("solver", "algencan");
+    ampl.read("../toyprob.mod");
+    ampl.solve();
 
     return 0;
   } catch (const std::exception &e) {

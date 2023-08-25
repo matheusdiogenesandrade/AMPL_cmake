@@ -30,6 +30,7 @@ IF ( UNIX )
 
         # amplapi
         set(AMPL_API_DIR "${AMPL_DIR}/amplapi")
+        set(AMPL_API_INCLUDE "${AMPL_API_DIR}/include")
 
         # runpath
         set(CMAKE_INSTALL_RPATH "${AMPL_API_DIR}/lib")
@@ -48,6 +49,7 @@ IF ( UNIX )
         set_target_properties(ampl PROPERTIES
             IMPORTED_LOCATION ${AMPL_LIBRARY}
             INTERFACE_INCLUDE_DIRECTORIES ${AMPL_API_DIR}/include)
+      target_compile_options(ampl PRIVATE ${CXX11_FLAG})
 
     endif ()
 
@@ -57,7 +59,9 @@ IF ( UNIX )
     # if all listed variables are TRUE
     find_package_handle_standard_args(AMPL  DEFAULT_MSG AMPL_LIBRARY)
 
-    mark_as_advanced(AMPL_LIBRARY)
+    #    mark_as_advanced(AMPL_LIBRARY)
+    #    mark_as_advanced(AMPL_API_INCLUDE)
+
 
 ENDIF()
 
