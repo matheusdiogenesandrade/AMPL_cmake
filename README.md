@@ -3,13 +3,13 @@
 ```sh
 mkdir build
 
+conan install . --profile conanprofile.txt --output-folder=build  --build=missing
+
 cd build
 
-conan install .. --profile ../conanprofile.txt --build=missing
-
-cmake ..
+cmake .. --preset conan-release
 
 make
 
-./bin/main
+./main
 ```
